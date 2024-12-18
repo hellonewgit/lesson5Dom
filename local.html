@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="title">Локальное хранилище</h1>
+    <div class="content">
+        <input id="input" type="text">
+        <button id="btn">Сохранить имя</button>
+    </div>
+    <div class="show-name"></div>
+    <script>
+        const nameInput = document.getElementById('input');
+        const saveNameBtn = document.getElementById('btn');
+        const currentNameDiv = document.querySelector('.show-name');
+
+        const savedName = localStorage.getItem('userName');
+
+        if (savedName) {
+            currentNameDiv.textContent = `Сохраненное имя ${savedName}`;
+            nameInput.value = savedName;
+        }
+
+        saveNameBtn.addEventListener('click', function (e) {
+            const name = nameInput.value;
+            localStorage.setItem('userName', name);
+            currentNameDiv.textContent = `Сохраненное имя ${name}`;
+        });
+    </script>
+</body>
+
+</html>
